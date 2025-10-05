@@ -3,18 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAuth } from "../../context/AuthContext";
 
 export default function GlobalHeader() {
   const url = usePathname();
-  const { logout } = useAuth();
   const isInsights = url?.includes("/vts/insights");
   const isMarket = url?.includes("/vts/market");
   const isLease = url?.includes("/vts/lease");
-
-  const handleLogout = () => {
-    logout();
-  };
 
   return (
     <div className="flex h-[50px] items-center bg-black px-4">
@@ -116,13 +110,9 @@ export default function GlobalHeader() {
           />
         </svg>
 
-        <button
-          onClick={handleLogout}
-          className="size-8 cursor-pointer rounded-full bg-white text-sm font-bold text-black"
-          title="Logout"
-        >
+        <div className="size-8 cursor-pointer rounded-full bg-white text-sm font-bold text-black flex items-center justify-center">
           JD
-        </button>
+        </div>
       </div>
       <span className="absolute top-4 right-4 z-10 flex size-12 cursor-pointer items-center justify-center rounded-full bg-yellow-400 text-2xl font-bold text-black transition-all duration-200 hover:bg-yellow-300">
         <svg
